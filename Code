@@ -1,0 +1,146 @@
+#include <stdio.h>
+
+int calculateGrade();
+int viewGradeInfo();
+int displayMenu();
+
+int displayMenu()
+{
+
+printf("\n========================================\n");
+printf(" STUDENT GRADE MANAGEMENT\n");
+printf("========================================\n");
+printf("[1] Calculate Student Grade\n");
+printf("[2] View Grade Information\n");
+printf("[3] Exit\n");
+printf("========================================\n");
+}
+
+int calculateGrade()
+{
+char name[50];
+float quiz, activity, exam, average;
+char grade;
+
+printf("\n--- CALCULATE STUDENT GRADE ---\n");
+
+printf("Enter student name: ");
+scanf(" %[^\n]", name);
+
+printf("Enter Quiz Percent Score: ");
+scanf("%f", &quiz);
+
+printf("Enter Activity Percent Score: ");
+scanf("%f", &activity);
+
+printf("Enter Exam Percent Score: ");
+scanf("%f", &exam);
+
+average = (quiz + activity + exam) / 3;
+
+if (average >= 90)
+{
+grade = 'A';
+}
+else if (average >= 80)
+{
+grade = 'B';
+}
+else if (average >= 75)
+{
+grade = 'C';
+}
+else if (average >= 70)
+{
+grade = 'D';
+}
+else
+{
+grade = 'F';
+
+}
+
+printf("\n========================================\n");
+printf(" STUDENT RESULT\n");
+printf("========================================\n");
+printf("Student Name : %s\n", name);
+printf("Average : %.2f\n", average);
+printf("Grade : %c\n", grade);
+
+switch (grade)
+{
+case 'A':
+printf("Remarks : Excellent!\n");
+break;
+
+case 'B':
+printf("Remarks : Very Good!\n");
+break;
+
+case 'C':
+printf("Remarks : Good!\n");
+break;
+
+case 'D':
+printf("Remarks : Passed.\n");
+
+break;
+
+case 'F':
+printf("Remarks : Failed.\n");
+break;
+
+default:
+printf("Remarks : Invalid grade.\n");
+}
+
+printf("========================================\n");
+}
+
+int viewGradeInfo()
+{
+printf("\n--- GRADE INFORMATION ---\n");
+
+printf("A = 90 - 100 : Excellent\n");
+printf("B = 80 - 89 : Very Good\n");
+printf("C = 75 - 79 : Good\n");
+printf("D = 70 - 74 : Passed\n");
+printf("F = Below 70 : Failed\n");
+}
+
+int main()
+
+{
+int choice;
+int continueProgram = 1;
+
+while (continueProgram == 1)
+{
+displayMenu();
+
+printf("Enter your choice: ");
+scanf("%d", &choice);
+
+switch (choice)
+{
+case 1:
+calculateGrade();
+break;
+
+case 2:
+viewGradeInfo();
+break;
+
+case 3:
+printf("\nThank you for using the system!\n");
+continueProgram = 0;
+
+break;
+
+default:
+printf("\nInvalid choice. Please try again.\n");
+}
+}
+
+return 0;
+}
